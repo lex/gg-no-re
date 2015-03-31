@@ -13,7 +13,7 @@ gg no re is a web scale reference in-memory database manager. Some features incl
 
 ### Demo
 
-Live demo at: http://oispa.beer:5050
+Live demo at: http://oispa.beer:5000
 
 ### Installation
   Clone the repository, then:
