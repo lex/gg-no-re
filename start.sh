@@ -1,1 +1,2 @@
-screen python main.py
+. venv/bin/activate
+python main.py
