@@ -2,13 +2,18 @@
 
 gg no re is a web scale reference in-memory database manager. Some features include:
 
-  - Blazing fast in-memory MongoDB database
-  - Production ready Python backend
-  - Highly functional and gorgeous riot.js frontend 
+- Blazing fast in-memory MongoDB database
+- Production ready Python backend
+- Highly functional and gorgeous riot.js frontend 
 
 ### Prerequisites
+
 - Python
 - MongoDB
+
+### Demo
+
+Live demo at: http://oispa.beer:5050
 
 ### Installation
   Clone the repository, then:
