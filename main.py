@@ -5,7 +5,7 @@ app = Flask(__name__)
 def main():
     return 'sick welcome screen'
 
-@app.route('/list/<page_number>')
+@app.route('/<page_number>')
 def paged(page_number):
     return give_page(page_number)
 
