@@ -22,8 +22,10 @@ def paged(page_number):
     return give_page(page_number)
 
 def give_page(number):
-    b = Book('Juuh vol. 5', 'Juuh Elikkäs')
-    return render_template('list.html', json = Enc().encode(b));
+    books = []
+    for i in range(0,10):
+        books.append(Book('Juuh vol. {}'.format(i), 'Juuh Elikkäs'))
+    return render_template('list.html', json = Enc().encode(books));
 
 if __name__ == '__main__':
     app.debug = True
