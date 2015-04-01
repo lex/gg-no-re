@@ -23,7 +23,7 @@ def paged(page_number):
 
 def give_page(number):
     books = []
-    for i in range(0, number):
+    for i in range(0, int(number)):
         books.append(Book('Juuh vol. {}'.format(i), 'Juuh Elikkäs'))
     return render_template('list.html', json = Enc().encode(books));
 
