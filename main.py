@@ -82,7 +82,6 @@ def book_deleting():
 
 @app.route('/edit_book/<b_id>', methods=['GET', 'POST'])
 def editing(b_id):
-
     if request.method == 'GET':
         b = get_book(b_id)
         return render_template('edit_book.html',
