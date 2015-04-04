@@ -2,29 +2,42 @@
 
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../static/css/foundation.css" />
+    <script src="../static/js/vendor/modernizr.js"></script>
+    <script src="../static/js/vendor/jquery.js"></script>
+    <script src="../static/js/foundation.min.js"></script>
 </head>
 
 <body>
-    <form method='post'>
-        <input type='hidden' name='db_id' value={{ db_id }}>
-        Title:
-        <input type='text' name='title' value={{ title }}>
-        <br>
-        Author:
-        <input type='text' name='author' value={{ author }}>
-        <br>
-        Pages:
-        <input type='text' name='pages' value={{ pages }}>
-        <br>
-        Year:
-        <input type='text' name='year' value={{ year }}> 
-        <br>
-        Publisher:
-        <input type='text' name='publisher' value={{ publisher }}>
-        <br>
-        <input type='submit' value='Apply changes'>
-    </form>
+    <div class='row'>
+        <div class='small-12 small-centered colums'>
+            <p align='center'>
+                <form method='post'>
+                    <input type='hidden' name='db_id' value={{ db_id }}>
+                    Title:
+                    <input type='text' name='title' value={{ title }}>
+                    <br>
+                    Author:
+                    <input type='text' name='author' value={{ author }}>
+                    <br>
+                    Pages:
+                    <input type='text' name='pages' value={{ pages }}>
+                    <br>
+                    Year:
+                    <input type='text' name='year' value={{ year }}>
+                    <br>
+                    Publisher:
+                    <input type='text' name='publisher' value={{ publisher }}>
+                    <br>
+                    <input type='submit' value='Apply changes' class='button'>
+                </form>
+            </p>
+        </div>
+    </div>
 
+    <script>
+        $(document).foundation();
+    </script>
 </body>
 </html>
