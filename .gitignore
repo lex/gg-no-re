@@ -58,3 +58,6 @@ target/
 
 # Python's virtualenv
 venv/
+
+# Node stuff
+node_modules/

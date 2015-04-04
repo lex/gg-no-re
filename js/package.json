@@ -1,0 +1,15 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "riottii",
+  "main": "index.js",
+  "dependencies": {
+    "riot": "^2.0.13"
+  },
+  "scripts": {
+  "watch:riot": "riot -w src/ ../static/"
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "BSD-3"
+}

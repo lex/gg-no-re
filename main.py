@@ -17,6 +17,7 @@ from ming import (create_datastore,
 bind = create_datastore('ggnore')
 session = Session(bind)
 app = Flask(__name__)
+app.config['STATIC_FOLDER'] = 'static'
 
 BookModel = collection(
         'reference_book', session,
@@ -57,7 +58,7 @@ def book_adding():
                 r['year'],
                 r['publisher'])
 
-        return redirect(url_for('/'))
+        return redirect('/')
 
 def list_books_as_json():
     books = BookModel.m.find().all()

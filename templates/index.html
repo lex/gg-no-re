@@ -3,11 +3,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script src="static/riot.js"></script>
+  <script src="static/enterprise-book-list.js"></script>
 </head>
 
 <body>
+    <enterprise-book-list></enterprise-book-list>
     <script>
-        var content = {{ content|safe }}
+        riot.mount('enterprise-book-list', { 'books': {{ content|safe }} });
     </script>
 </body>
 </html>
