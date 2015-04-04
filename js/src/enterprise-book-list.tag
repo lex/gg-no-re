@@ -1,5 +1,5 @@
 <enterprise-book-list>
-    <table>
+    <table if = { this.books.length > 0 }>
         <thead>
             <tr>
                 <th>Title</th>
@@ -11,7 +11,7 @@
         </thead>
 
         <tbody>
-            <tr each={ b in books }>
+            <tr each={ b in this.books }>
                 <td> { b.title } </td>
                 <td> { b.author } </td>
                 <td> { b.pages } </td>
@@ -21,6 +21,7 @@
         </tbody>
     </table>
 
+    <style>
     <script>
         this.books = opts.books
     </script>
