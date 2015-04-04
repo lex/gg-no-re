@@ -2,28 +2,40 @@
 
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="static/css/foundation.css" />
+    <script src="static/js/vendor/modernizr.js"></script>
+    <script src="static/js/vendor/jquery.js"></script>
+    <script src="static/js/foundation.min.js"></script>
 </head>
 
 <body>
-    <form method='post'>
-        Title:
-        <input type='text' name='title'>
-        <br>
-        Author:
-        <input type='text' name='author'>
-        <br>
-        Pages:
-        <input type='text' name='pages'>
-        <br>
-        Year:
-        <input type='text' name='year'>
-        <br>
-        Publisher:
-        <input type='text' name='publisher'>
-        <br>
-        <input type='submit' value='Add book'>
-    </form>
-
+    <div class='row'>
+        <div class='small-12 small-centered colums'>
+            <p align='center'>
+            <form method='post'>
+                Title:
+                <input type='text' name='title'>
+                <br>
+                Author:
+                <input type='text' name='author'>
+                <br>
+                Pages:
+                <input type='text' name='pages'>
+                <br>
+                Year:
+                <input type='text' name='year'>
+                <br>
+                Publisher:
+                <input type='text' name='publisher'>
+                <br>
+                <input type='submit' value='Add book' class='button'>
+            </form>
+            </p>
+        </div>
+    </div>
+    <script>
+        $(document).foundation();
+    </script>
 </body>
 </html>
