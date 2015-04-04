@@ -1,7 +1,19 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, request, render_template
+from flask import (Flask,
+        request,
+        render_template,
+        redirect,
+        url_for)
+
 from json import JSONEncoder
-from ming import create_datastore, Session, collection, Field, Document, schema
+
+from ming import (create_datastore,
+        Session,
+        collection,
+        Field,
+        Document,
+        schema)
+
 bind = create_datastore('ggnore')
 session = Session(bind)
 app = Flask(__name__)
@@ -29,28 +41,44 @@ class Enc(JSONEncoder):
 
 @app.route('/')
 def main():
-    return render_template('index.html', content = list_books_as_json())
+    return render_template('index.html',
+            content = list_books_as_json())
 
 @app.route('/add_book', methods=['GET', 'POST'])
 def book_adding():
     if request.method == 'GET':
         return render_template('add_book.html')
+
     else:
         r = request.form
-        print r['title']
-        add_book(r['title'], r['author'], r['pages'], r['year'], r['publisher'])
-        return main()
+        add_book(r['title'],
+                r['author'],
+                r['pages'],
+                r['year'],
+                r['publisher'])
+
+        return redirect(url_for('/'))
 
 def list_books_as_json():
     books = BookModel.m.find().all()
     book_list = []
+
     for b in books:
-        book_list.append(Book(b.title, b.author, b.pages, b.year, b.publisher))
+        book_list.append(Book(b.title,
+            b.author,
+            b.pages,
+            b.year,
+            b.publisher))
 
     return Enc().encode(book_list)
 
 def add_book(title, author, pages, year, publisher):
-    b = BookModel(dict(title = title, author = author, pages = pages, year = year, publisher = publisher))
+    b = BookModel(dict(title = title,
+        author = author,
+        pages = pages,
+        year = year,
+        publisher = publisher))
+
     b.m.save()
 
 if __name__ == '__main__':
