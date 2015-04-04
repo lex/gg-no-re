@@ -70,8 +70,10 @@ def book_deleting():
         return render_template('delete_book.html',
                 content = list_books_as_json())
     else:
-        to_be_deleted = json.loads(request.form['to_be_deleted'])
-        #print to_be_deleted
+        try:
+            to_be_deleted = json.loads(request.form['to_be_deleted'])
+        except:
+            return redirect('/')
         for b_id in to_be_deleted.keys():
             BookModel.m.remove({'_id': ObjectId(b_id)})
 
