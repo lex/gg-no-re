@@ -7,12 +7,16 @@ from flask import (Flask,
 
 from json import JSONEncoder
 
+import json
+
 from ming import (create_datastore,
         Session,
         collection,
         Field,
         Document,
         schema)
+
+from bson.objectid import ObjectId
 
 bind = create_datastore('ggnore')
 session = Session(bind)
@@ -29,12 +33,13 @@ BookModel = collection(
         Field('publisher', str))
 
 class Book:
-    def __init__(self, title, author, pages, year, publisher):
+    def __init__(self, title, author, pages, year, publisher, db_id):
         self.title = title
         self.author = author
         self.pages = pages
         self.year = year
         self.publisher = publisher
+        self.db_id = db_id
 
 class Enc(JSONEncoder):
     def default(self, o):
@@ -49,7 +54,6 @@ def main():
 def book_adding():
     if request.method == 'GET':
         return render_template('add_book.html')
-
     else:
         r = request.form
         add_book(r['title'],
@@ -57,6 +61,19 @@ def book_adding():
                 r['pages'],
                 r['year'],
                 r['publisher'])
+
+        return redirect('/')
+
+@app.route('/delete_book', methods=['GET', 'POST'])
+def book_deleting():
+    if request.method == 'GET':
+        return render_template('delete_book.html',
+                content = list_books_as_json())
+    else:
+        to_be_deleted = json.loads(request.form['to_be_deleted'])
+        #print to_be_deleted
+        for b_id in to_be_deleted.keys():
+            BookModel.m.remove({'_id': ObjectId(b_id)})
 
         return redirect('/')
 
@@ -69,9 +86,11 @@ def list_books_as_json():
             b.author,
             b.pages,
             b.year,
-            b.publisher))
+            b.publisher,
+            str(b._id)))
 
     return Enc().encode(book_list)
+
 
 def add_book(title, author, pages, year, publisher):
     b = BookModel(dict(title = title,

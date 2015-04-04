@@ -1,0 +1,36 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="static/riot.js"></script>
+  <script src="static/enterprise-book-delete.js"></script>
+</head>
+
+<body>
+    <enterprise-book-delete></enterprise-book-delete>
+    <form method='post'>
+        <input type='hidden' name='to_be_deleted' id='to_be_deleted'>
+        <input type='submit' value='Delete'>
+    </form>
+    <script>
+        riot.mount('enterprise-book-delete', { 'books': {{ content|safe }}, 'add_id': add_id, 'remove_id': remove_id });
+        var deleted_list = {};
+
+        function add_id(id) {
+            deleted_list[id] = 1;
+            update_delete_list();
+        }
+
+        function remove_id(id) {
+            delete deleted_list[id];
+            update_delete_list();
+        }
+
+        function update_delete_list() {
+            var x = document.getElementById("to_be_deleted");
+            x.value = JSON.stringify(deleted_list);
+        }
+    </script>
+</body>
+</html>

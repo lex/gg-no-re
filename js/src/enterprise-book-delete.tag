@@ -1,4 +1,4 @@
-<enterprise-book-list>
+<enterprise-book-delete>
     <table>
         <thead>
             <tr>
@@ -7,6 +7,7 @@
                 <th>Pages</th>
                 <th>Year</th>
                 <th>Publisher</th>
+                <th>Delete?</th>
             </tr>
         </thead>
 
@@ -17,11 +18,24 @@
                 <td> { b.pages } </td>
                 <td> { b.year } </td>
                 <td> { b.publisher } </td>
+                <td> <input type='checkbox' name={ b.db_id } id={ b.db_id } onclick={ parent.handle_click }> </td>
             </tr>
         </tbody>
     </table>
 
     <script>
         this.books = opts.books;
+        this.add_id = opts.add_id;
+        this.remove_id = opts.remove_id;
+
+        handle_click(e) {
+            var id = e.item.b.db_id;
+            if (e.srcElement.checked)
+                this.add_id(id);
+            else
+                this.remove_id(id);
+            return true;
+        }
+
     </script>
-</enterprise-book-list>
+</enterprise-book-delete>
