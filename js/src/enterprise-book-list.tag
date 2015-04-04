@@ -1,5 +1,5 @@
 <enterprise-book-list>
-    <table if = { this.books.length > 0 }>
+    <table if={ this.books.length > 0 }>
         <thead>
             <tr>
                 <th>Title</th>
