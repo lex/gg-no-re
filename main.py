@@ -74,10 +74,44 @@ def book_deleting():
             to_be_deleted = json.loads(request.form['to_be_deleted'])
         except:
             return redirect('/')
+
         for b_id in to_be_deleted.keys():
             BookModel.m.remove({'_id': ObjectId(b_id)})
 
         return redirect('/')
+
+@app.route('/edit_book/<b_id>', methods=['GET', 'POST'])
+def editing(b_id):
+
+    if request.method == 'GET':
+        b = get_book(b_id)
+        return render_template('edit_book.html',
+                title = b.title,
+                author = b.author,
+                pages = b.pages,
+                year = b.year,
+                publisher = b.publisher,
+                db_id = b.db_id)
+    else:
+        r = request.form
+        edit_book(r['title'],
+                r['author'],
+                r['pages'],
+                r['year'],
+                r['publisher'],
+                r['db_id'])
+
+        return redirect('/')
+
+
+def edit_book(title, author, pages, year, publisher, db_id):
+    db_book = BookModel.m.find({'_id': ObjectId(db_id)}).first()
+    db_book.title = title
+    db_book.author = author
+    db_book.pages = pages
+    db_book.year = year
+    db_book.publisher = publisher
+    db_book.m.save()
 
 def list_books_as_json():
     books = BookModel.m.find().all()
@@ -103,6 +137,16 @@ def add_book(title, author, pages, year, publisher):
 
     b.m.save()
 
+def get_book(book_id):
+    db_book = BookModel.m.find({'_id': ObjectId(book_id)}).first()
+    b = Book(db_book.title,
+        db_book.author,
+        db_book.pages,
+        db_book.year,
+        db_book.publisher,
+        db_book._id)
+
+    return b
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0')

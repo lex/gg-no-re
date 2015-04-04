@@ -17,11 +17,18 @@
                 <td> { b.pages } </td>
                 <td> { b.year } </td>
                 <td> { b.publisher } </td>
+                <td> <a href='edit_book/{ b.db_id }'>edit</a> </td>
             </tr>
         </tbody>
     </table>
 
     <script>
         this.books = opts.books;
+        this.edit_callback = opts.edit_callback;
+
+        edit_this(e) {
+            var id = e.item.b.db_id;
+            this.edit_callback(id);
+        }
     </script>
 </enterprise-book-list>
