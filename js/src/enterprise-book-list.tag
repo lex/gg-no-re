@@ -12,11 +12,11 @@
 
         <tbody>
             <tr each={ b in this.books }>
-                <td> <div style='max-width: 442px; word-wrap: break-word'> { b.title } </div></td>
-                <td> <div style='max-width: 442px; word-wrap: break-word'> { b.author } </div></td>
-                <td> <div style='max-width: 442px; word-wrap: break-word'> { b.pages } </div></td>
-                <td> <div style='max-width: 442px; word-wrap: break-word'> { b.year } </div></td>
-                <td> <div style='max-width: 442px; word-wrap: break-word'> { b.publisher } </div></td>
+                <td> <div style='max-width: 250px; word-wrap: break-word'> { b.title } </div></td>
+                <td> <div style='max-width: 250px; word-wrap: break-word'> { b.author } </div></td>
+                <td> <div style='max-width: 250px; word-wrap: break-word'> { b.pages } </div></td>
+                <td> <div style='max-width: 250px; word-wrap: break-word'> { b.year } </div></td>
+                <td> <div style='max-width: 250px; word-wrap: break-word'> { b.publisher } </div></td>
                 <td> <a href='edit_book/{ b.db_id }'>edit</a> </td>
                 <td> <a href='delete_book/{ b.db_id }'>delete</a> </td>
             </tr>
