@@ -145,8 +145,8 @@ def get_book(book_id):
         db_book.year,
         db_book.publisher,
         db_book._id)
-
     return b
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0')
