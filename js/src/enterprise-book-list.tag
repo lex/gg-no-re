@@ -1,5 +1,5 @@
 <enterprise-book-list>
-    <table if = { this.books.length > 0 }>
+    <table if={ this.books.length > 0 }>
         <thead>
             <tr>
                 <th>Title</th>
@@ -23,14 +23,8 @@
         </tbody>
     </table>
 
-    <style>
     <script>
         this.books = opts.books;
         this.edit_callback = opts.edit_callback;
-
-        edit_this(e) {
-            var id = e.item.b.db_id;
-            this.edit_callback(id);
-        }
     </script>
 </enterprise-book-list>
