@@ -7,9 +7,11 @@
     "riot": "^2.0.13"
   },
   "scripts": {
-  "watch:riot": "riot -w src/ ../static/"
+    "watch:riot": "riot -w src/ ../static/"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "riot": "^2.0.13"
+  },
   "author": "",
   "license": "BSD-3"
 }

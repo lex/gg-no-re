@@ -1,5 +1,5 @@
-<enterprise-book-list>
-    <table if = { this.books.length > 0 }>
+<enterprise-book-delete>
+    <table>
         <thead>
             <tr>
                 <th>Title</th>
@@ -7,29 +7,35 @@
                 <th>Pages</th>
                 <th>Year</th>
                 <th>Publisher</th>
+                <th>Delete?</th>
             </tr>
         </thead>
 
         <tbody>
-            <tr each={ b in this.books }>
+            <tr each={ b in books }>
                 <td> { b.title } </td>
                 <td> { b.author } </td>
                 <td> { b.pages } </td>
                 <td> { b.year } </td>
                 <td> { b.publisher } </td>
-                <td> <a href='edit_book/{ b.db_id }'>edit</a> </td>
+                <td> <input type='checkbox' name={ b.db_id } id={ b.db_id } onclick={ parent.handle_click }> </td>
             </tr>
         </tbody>
     </table>
 
-    <style>
     <script>
         this.books = opts.books;
-        this.edit_callback = opts.edit_callback;
+        this.add_id = opts.add_id;
+        this.remove_id = opts.remove_id;
 
-        edit_this(e) {
+        handle_click(e) {
             var id = e.item.b.db_id;
-            this.edit_callback(id);
+            if (e.srcElement.checked)
+                this.add_id(id);
+            else
+                this.remove_id(id);
+            return true;
         }
+
     </script>
-</enterprise-book-list>
+</enterprise-book-delete>
