@@ -64,21 +64,10 @@ def book_adding():
 
         return redirect('/')
 
-@app.route('/delete_book', methods=['GET', 'POST'])
-def book_deleting():
-    if request.method == 'GET':
-        return render_template('delete_book.html',
-                content = list_books_as_json())
-    else:
-        try:
-            to_be_deleted = json.loads(request.form['to_be_deleted'])
-        except:
-            return redirect('/')
-
-        for b_id in to_be_deleted.keys():
-            BookModel.m.remove({'_id': ObjectId(b_id)})
-
-        return redirect('/')
+@app.route('/delete_book/<b_id>')
+def book_deleting(b_id):
+    BookModel.m.remove({'_id': ObjectId(b_id)})
+    return redirect('/')
 
 @app.route('/edit_book/<b_id>', methods=['GET', 'POST'])
 def editing(b_id):

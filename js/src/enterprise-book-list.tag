@@ -18,6 +18,7 @@
                 <td> { b.year } </td>
                 <td> { b.publisher } </td>
                 <td> <a href='edit_book/{ b.db_id }'>edit</a> </td>
+                <td> <a href='delete_book/{ b.db_id }'>delete</a> </td>
             </tr>
         </tbody>
     </table>
