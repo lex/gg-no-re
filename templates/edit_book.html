@@ -3,41 +3,18 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../static/css/foundation.css" />
+    <script src="../static/riot.js"></script>
+    <script src="../static/reference-edit.js"></script>
     <script src="../static/js/vendor/modernizr.js"></script>
     <script src="../static/js/vendor/jquery.js"></script>
     <script src="../static/js/foundation.min.js"></script>
+    <link rel="stylesheet" href="../static/css/foundation.css" />
 </head>
-
 <body>
-    <div class='row'>
-        <div class='small-12 small-centered colums'>
-            <p align='center'>
-                <form method='post'>
-                    <input type='hidden' name='db_id' value={{ db_id }}>
-                    Title:
-                    <input type='text' name='title' value={{ title }}>
-                    <br>
-                    Author:
-                    <input type='text' name='author' value={{ author }}>
-                    <br>
-                    Pages:
-                    <input type='text' name='pages' value={{ pages }}>
-                    <br>
-                    Year:
-                    <input type='text' name='year' value={{ year }}>
-                    <br>
-                    Publisher:
-                    <input type='text' name='publisher' value={{ publisher }}>
-                    <br>
-                    <input type='submit' value='Apply changes' class='button'>
-                </form>
-            </p>
-        </div>
-    </div>
-
+    <reference-edit></reference-edit>
     <script>
         $(document).foundation();
+        riot.mount('reference-edit', { 'book': {{ book|safe }}});
     </script>
 </body>
 </html>

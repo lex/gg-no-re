@@ -48,7 +48,7 @@ class Enc(JSONEncoder):
 @app.route('/')
 def main():
     return render_template('index.html',
-            content = list_books_as_json())
+            books = list_books_as_json())
 
 @app.route('/add_book', methods=['GET', 'POST'])
 def book_adding():
@@ -73,13 +73,7 @@ def book_deleting(b_id):
 def editing(b_id):
     if request.method == 'GET':
         b = get_book(b_id)
-        return render_template('edit_book.html',
-                title = b.title,
-                author = b.author,
-                pages = b.pages,
-                year = b.year,
-                publisher = b.publisher,
-                db_id = b.db_id)
+        return render_template('edit_book.html', book = Enc().encode(b))
     else:
         r = request.form
         edit_book(r['title'],
@@ -132,7 +126,7 @@ def get_book(book_id):
         db_book.pages,
         db_book.year,
         db_book.publisher,
-        db_book._id)
+        str(db_book._id))
 
     return b
 
