@@ -4,27 +4,18 @@
 <head>
     <meta charset="utf-8">
     <script src="static/riot.js"></script>
-    <script src="static/enterprise-book-list.js"></script>
+    <!-- <script src="static/enterprise-book-list.js"></script> -->
+    <script src="static/reference-manager.js"></script>
     <link rel="stylesheet" href="static/css/foundation.css" />
     <script src="static/js/vendor/modernizr.js"></script>
     <script src="static/js/vendor/jquery.js"></script>
     <script src="static/js/foundation.min.js"></script>
 </head>
 <body>
-    <div class='row'>
-        <div class='small-12 small-centered columns'>
-            <p align='center'><enterprise-book-list></enterprise-book-list></p>
-        </div>
-    </div>
-    <div class='row'>
-        <div class='small-12 small-centered columns'>
-            <p align='center'><a href='add_book' class='button'>Add a new book</a></p>
-        </div>
-    </div>
-
+    <reference-manager></reference-manager>
     <script>
         $(document).foundation();
-        riot.mount('enterprise-book-list', { 'books': {{ content|safe }}});
+        riot.mount('reference-manager', { 'books': {{ content|safe }}});
     </script>
 </body>
 </html>
