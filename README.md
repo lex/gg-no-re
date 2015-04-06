@@ -1,10 +1,10 @@
 # gg no re
 
-gg no re is a web scale reference in-memory database manager. Some features include:
+gg no re is a web scale in-memory reference database manager. Some features include:
 
 - Blazing fast in-memory MongoDB database
 - Production ready Python backend
-- Highly functional and gorgeous riot.js frontend 
+- Highly functional and gorgeous riot.js frontend
 
 ### Prerequisites
 
