@@ -62,6 +62,8 @@
                 <td style='max-width: 250px; word-wrap: break-word'> { b.publisher } </td>
                 <td> <a href='edit_book/{ b.db_id }'>edit</a> </td>
                 <td> <a href='delete_book/{ b.db_id }'>delete</a> </td>
+                <td> <a href='show_single_bibtex/book/{ b.db_id }'>show bibtex</a> </td>
+
             </tr>
         </tbody>
     </table>
@@ -88,6 +90,7 @@
                 <td style='max-width: 250px; word-wrap: break-word'> { b.volume } </td>
                 <td> <a href='edit_article/{ a.db_id }'>edit</a> </td>
                 <td> <a href='delete_article/{ a.db_id }'>delete</a> </td>
+                <td> <a href='show_single_bibtex/article/{ a.db_id }'>show bibtex</a> </td>
             </tr>
         </tbody>
     </table>
@@ -113,6 +116,7 @@
                 <td style='max-width: 250px; word-wrap: break-word'> { i.year } </td>
                 <td> <a href='edit_inproceedings/{ i.db_id }'>edit</a> </td>
                 <td> <a href='delete_inproceedings/{ i.db_id }'>delete</a> </td>
+                <td> <a href='show_single_bibtex/inproceedings/{ i.db_id }'>show bibtex</a> </td>
             </tr>
         </tbody>
     </table>

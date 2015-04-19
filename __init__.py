@@ -119,7 +119,7 @@ def main():
 def get_all_bibtex():
     all_items = get_index_content(False)
     s = ''
-    print all_items
+
     for b in all_items['books']:
         s += (b.bibtex + '<br>')
     for a in all_items['articles']:
@@ -127,6 +127,17 @@ def get_all_bibtex():
     for i in all_items['inproceedings']:
         s += i.bibtex + '<br>'
     return s
+
+@app.route('/show_single_bibtex/<db_type>/<db_id>')
+def show_single_bibtex(db_type, db_id):
+    if db_type == 'book':
+        return get_book(db_id).bibtex
+    elif db_type == 'article':
+        return get_article(db_id).bibtex
+    elif db_type == 'inproceedings':
+        return get_inproceedings(db_id).bibtex
+    else:
+        return 'invalid'
 
 @app.route('/add_book', methods=['GET', 'POST'])
 def book_adding():
