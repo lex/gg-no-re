@@ -1,4 +1,4 @@
-sudo easy_install pip
+easy_install pip
 pip install virtualenv
 virtualenv venv
 . venv/bin/activate
