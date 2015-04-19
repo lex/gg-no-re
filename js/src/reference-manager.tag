@@ -34,10 +34,10 @@
     </div>
     <div class='row'>
         <div class='small-12 small-centered columns'>
-            <p align='center'><a href='add_inproceedings' class='button'>Add an inproceedings</a></p>
+            <p align='center'><a href='add_inproceedings' class='button'>Add a new inproceedings</a></p>
         </div>
     </div>
-    
+
     <script>
         this.content = opts.content
         this.books = this.content.books
@@ -67,11 +67,8 @@
     </table>
 
     <script>
-        console.log(this.books)
         this.books = opts.books;
-        console.log(this.books)
-        console.log(this.books.length)
-        this.book_tableheads = ['Title', 'Author', 'Pages', 'Year', 'Publisher'];
+        this.book_tableheads = ['Author', 'Title', 'Pages', 'Year', 'Publisher'];
     </script>
 </enterprise-book-list>
 

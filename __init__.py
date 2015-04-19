@@ -62,14 +62,14 @@ class Book:
         self.year = year
         self.publisher = publisher
         self.db_id = db_id
-#        self.bibtex = """
-#@Book{{
-#    author = "{}",
-#    title = "{}",
-#    publisher = "{}",
-#    year = "{}",
-#}}
-#""".format(author, title, publisher, year)
+        self.bibtex = """
+@Book{{<br>
+    author = "{}",<br>
+    title = "{}",<br>
+    publisher = "{}",<br>
+    year = "{}"<br>
+}}
+""".format(author, title, publisher, year)
 
 class Inproceedings:
     def __init__(self, author, title, school, year, db_id):
@@ -78,14 +78,14 @@ class Inproceedings:
         self.school = school
         self.year = year
         self.db_id = db_id
-#        self.bibtex = """
-#@INPROCEEDINGS{{
-#    author = "{}",
-#    title = "{}",
-#    school = "{}",
-#    year = "{}",
-#}}
-#""".format(author, title, school, year)
+        self.bibtex = """
+@INPROCEEDINGS{{<br>
+    author = "{}",<br>
+    title = "{}",<br>
+    school = "{}",<br>
+    year = "{}"<br>
+}}
+""".format(author, title, school, year)
 
 
 class Article:
@@ -96,15 +96,15 @@ class Article:
         self.year = year
         self.volume = volume
         self.db_id = db_id
-#        self.bibtex = """
-#@ARTICLE{{
-#    author = "{}",
-#    title = "{}",
-#    journal = "{}",
-#    year = "{}",
-#    volume = "{}",
-#}}
-#""".format(author, title, journal, year, volume)
+        self.bibtex = """
+@ARTICLE{{<br>
+    author = "{}",<br>
+    title = "{}",<br>
+    journal = "{}",<br>
+    year = "{}",<br>
+    volume = "{}"<br>
+}}
+""".format(author, title, journal, year, volume)
 
 class Enc(JSONEncoder):
     def default(self, o):
@@ -113,7 +113,20 @@ class Enc(JSONEncoder):
 @app.route('/')
 def main():
     return render_template('index.html',
-            content = get_index_content())
+            content = get_index_content(True))
+
+@app.route('/bibtex')
+def get_all_bibtex():
+    all_items = get_index_content(False)
+    s = ''
+    print all_items
+    for b in all_items['books']:
+        s += (b.bibtex + '<br>')
+    for a in all_items['articles']:
+        s += a.bibtex + '<br>'
+    for i in all_items['inproceedings']:
+        s += i.bibtex + '<br>'
+    return s
 
 @app.route('/add_book', methods=['GET', 'POST'])
 def book_adding():
@@ -244,12 +257,15 @@ def edit_article(author, title, journal, year, volume, db_id):
     db_article.volume = volume
     db_article.m.save()
 
-def get_index_content():
+def get_index_content(json):
     content = {}
     content['books'] = list_books()
     content['inproceedings'] = list_inproceedings()
     content['articles'] = list_articles()
-    return Enc().encode(content)
+    if json:
+        return Enc().encode(content)
+    else:
+        return content
 
 def list_books():
     books = BookModel.m.find().all()
