@@ -38,6 +38,13 @@
         </div>
     </div>
 
+    <div class='row'>
+        <div class='small-12 small-centered columns'>
+            <p align='center'><a href='bibtex' class='button'>Dump everything in bibtex</a></p>
+        </div>
+    </div>
+
+
     <script>
         this.content = opts.content
         this.books = this.content.books
