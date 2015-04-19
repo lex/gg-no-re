@@ -1,0 +1,20 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script src="../static/riot.js"></script>
+    <script src="../static/article-edit.js"></script>
+    <script src="../static/js/vendor/modernizr.js"></script>
+    <script src="../static/js/vendor/jquery.js"></script>
+    <script src="../static/js/foundation.min.js"></script>
+    <link rel="stylesheet" href="../static/css/foundation.css" />
+</head>
+<body>
+    <article-edit></article-edit>
+    <script>
+        $(document).foundation();
+        riot.mount('article-edit', { 'article': {{ article|safe }}});
+    </script>
+</body>
+</html>
