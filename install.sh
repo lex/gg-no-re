@@ -1,8 +1,6 @@
-wget https://bootstrap.pypa.io/ez_setup.py -O - | python - --user
-easy_install pip
-pip install virtualenv
-virtualenv venv
+wget https://bootstrap.pypa.io/get-pip.py -O - | python - --user
+python -m pip install --user virtualenv
+python -m virtualenv venv
 . venv/bin/activate
-pip install flask
-pip install ming
-pip install bibtexparser
+python -m pip install flask
+python -m pip install ming
