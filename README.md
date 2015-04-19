@@ -23,6 +23,9 @@ Live demo at: http://oispa.beer:5000
   $ ./start.sh
 ```
 
+### Jenkins
+http://ohtu.jamo.io/view/k2015-ohtu-miniprojektit/job/gg-no-re/
+
 ### License
 
 Copyright (c) 2015, gg ez
