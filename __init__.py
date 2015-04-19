@@ -3,7 +3,8 @@ from flask import (Flask,
         request,
         render_template,
         redirect,
-        url_for)
+        url_for,
+        jsonify)
 
 from json import JSONEncoder
 
@@ -61,14 +62,14 @@ class Book:
         self.year = year
         self.publisher = publisher
         self.db_id = db_id
-        self.bibtex = """
-@Book{{
-    author = "{}",
-    title = "{}",
-    publisher = "{}",
-    year = "{}",
-}}
-""".format(author, title, publisher, year)
+#        self.bibtex = """
+#@Book{{
+#    author = "{}",
+#    title = "{}",
+#    publisher = "{}",
+#    year = "{}",
+#}}
+#""".format(author, title, publisher, year)
 
 class Inproceedings:
     def __init__(self, author, title, school, year, db_id):
@@ -77,14 +78,14 @@ class Inproceedings:
         self.school = school
         self.year = year
         self.db_id = db_id
-        self.bibtex = """
-@INPROCEEDINGS{{
-    author = "{}",
-    title = "{}",
-    school = "{}",
-    year = "{}",
-}}
-""".format(author, title, school, year)
+#        self.bibtex = """
+#@INPROCEEDINGS{{
+#    author = "{}",
+#    title = "{}",
+#    school = "{}",
+#    year = "{}",
+#}}
+#""".format(author, title, school, year)
 
 
 class Article:
@@ -95,15 +96,15 @@ class Article:
         self.year = year
         self.volume = volume
         self.db_id = db_id
-        self.bibtex = """
-@ARTICLE{{
-    author = "{}",
-    title = "{}",
-    journal = "{}",
-    year = "{}",
-    volume = "{}",
-}}
-""".format(author, title, journal, year, volume)
+#        self.bibtex = """
+#@ARTICLE{{
+#    author = "{}",
+#    title = "{}",
+#    journal = "{}",
+#    year = "{}",
+#    volume = "{}",
+#}}
+#""".format(author, title, journal, year, volume)
 
 class Enc(JSONEncoder):
     def default(self, o):
@@ -112,7 +113,7 @@ class Enc(JSONEncoder):
 @app.route('/')
 def main():
     return render_template('index.html',
-            books = list_books_as_json())
+            content = get_index_content())
 
 @app.route('/add_book', methods=['GET', 'POST'])
 def book_adding():
@@ -245,12 +246,12 @@ def edit_article(author, title, journal, year, volume, db_id):
 
 def get_index_content():
     content = {}
-    content['books'] = list_books_as_json()
-    content['inproceedings'] = list_inproceedings_as_json()
-    content['articles'] = list_articles_as_json()
-    return content
+    content['books'] = list_books()
+    content['inproceedings'] = list_inproceedings()
+    content['articles'] = list_articles()
+    return Enc().encode(content)
 
-def list_books_as_json():
+def list_books():
     books = BookModel.m.find().all()
     book_list = []
 
@@ -262,9 +263,9 @@ def list_books_as_json():
             b.publisher,
             str(b._id)))
 
-    return Enc().encode(book_list)
+    return book_list
 
-def list_inproceedings_as_json():
+def list_inproceedings():
     inproceedings = InproceedingsModel.m.find().all()
     inproceedings_list = []
 
@@ -275,9 +276,9 @@ def list_inproceedings_as_json():
             i.year,
             str(i._id)))
 
-    return Enc().encode(inproceedings_list)
+    return inproceedings_list
 
-def list_articles_as_json():
+def list_articles():
     articles = ArticleModel.m.find().all()
     article_list = []
 
@@ -289,7 +290,7 @@ def list_articles_as_json():
             a.volume,
             str(a._id)))
 
-    return Enc().encode(article_list)
+    return article_list
 
 def add_book(title, author, pages, year, publisher):
     b = BookModel(dict(title = title,
