@@ -1,5 +1,4 @@
-wget https://bootstrap.pypa.io/ez_setup.py -O - | python - --user
-easy_install pip
+wget https://bootstrap.pypa.io/get-pip.py -O - | python - --user
 pip install virtualenv
 virtualenv venv
 . venv/bin/activate
