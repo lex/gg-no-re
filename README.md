@@ -15,9 +15,6 @@ gg no re is a web scale in-memory reference database manager. Some features incl
 
 Live demo at: http://oispa.beer:5000
 
-### Jenkins
-http://ohtu.jamo.io/view/k2015-ohtu-miniprojektit/job/gg-no-re/
-
 ### Installation
   Clone the repository, then:
   ```sh
@@ -25,6 +22,9 @@ http://ohtu.jamo.io/view/k2015-ohtu-miniprojektit/job/gg-no-re/
   $ ./install.sh
   $ ./start.sh
 ```
+
+### Jenkins
+http://ohtu.jamo.io/view/k2015-ohtu-miniprojektit/job/gg-no-re/
 
 ### License
 
