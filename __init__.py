@@ -243,6 +243,13 @@ def edit_article(author, title, journal, year, volume, db_id):
     db_article.volume = volume
     db_article.m.save()
 
+def get_index_content():
+    content = {}
+    content['books'] = list_books_as_json()
+    content['inproceedings'] = list_inproceedings_as_json()
+    content['articles'] = list_articles_as_json()
+    return content
+
 def list_books_as_json():
     books = BookModel.m.find().all()
     book_list = []
