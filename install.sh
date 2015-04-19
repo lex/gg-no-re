@@ -1,4 +1,5 @@
-easy_install pip
+wget https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
 pip install virtualenv
 virtualenv venv
 . venv/bin/activate
