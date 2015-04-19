@@ -18,13 +18,17 @@ from ming import (create_datastore,
 
 from bson.objectid import ObjectId
 
-bind = create_datastore('ggnore')
-session = Session(bind)
-app = Flask(__name__)
-app.config['STATIC_FOLDER'] = 'static'
+if __name__ == '__main__':
+    bind = create_datastore('ggnore')
+    session = Session(bind)
+    app = Flask(__name__)
+    app.config['STATIC_FOLDER'] = 'static'
+else:
+    bind = create_datastore('mim://localhost:27017', database='test')
+    pass
 
-BookModel = collection(
-        'reference_book', session,
+BookModel = collection('reference_book',
+        session,
         Field('_id', schema.ObjectId),
         Field('title', str),
         Field('author', str),
@@ -40,6 +44,49 @@ class Book:
         self.year = year
         self.publisher = publisher
         self.db_id = db_id
+        self.bibtex = """
+@Book{{
+    author = "{}",
+    title = "{}",
+    publisher = "{}",
+    year = "{}",
+}}
+""".format(author, title, publisher, year)
+
+class Inproceedings:
+    def __init__(self, author, title, school, year, db_id):
+        self.author = author
+        self.title = title
+        self.school = school
+        self.year = year
+        self.db_id = db_id
+        self.bibtex = """
+@INPROCEEDINGS{{
+    author = "{}",
+    title = "{}",
+    school = "{}",
+    year = "{}",
+}}
+""".format(author, title, school, year)
+
+
+class Article:
+    def __init__(self, author, title, journal, year, volume, db_id):
+        self.author = author
+        self.title = title
+        self.journal = journal
+        self.year = year
+        self.volume = volume
+        self.db_id = db_id
+        self.bibtex = """
+@ARTICLE{{
+    author = "{}",
+    title = "{}",
+    journal = "{}",
+    year = "{}",
+    volume = "{}",
+}}
+""".format(author, title, journal, year, volume)
 
 class Enc(JSONEncoder):
     def default(self, o):
@@ -87,7 +134,7 @@ def editing(b_id):
 
 
 def edit_book(title, author, pages, year, publisher, db_id):
-    db_book = BookModel.m.find({'_id': ObjectId(db_id)}).first()
+    db_book = BookModel.m.find({ '_id': ObjectId(db_id) }).first()
     db_book.title = title
     db_book.author = author
     db_book.pages = pages
@@ -120,7 +167,7 @@ def add_book(title, author, pages, year, publisher):
     b.m.save()
 
 def get_book(book_id):
-    db_book = BookModel.m.find({'_id': ObjectId(book_id)}).first()
+    db_book = BookModel.m.find({ '_id': ObjectId(book_id) }).first()
     b = Book(db_book.title,
         db_book.author,
         db_book.pages,
