@@ -17,9 +17,6 @@ from ming import (create_datastore,
 
 from bson.objectid import ObjectId
 
-app = Flask(__name__)
-app.config['STATIC_FOLDER'] = 'static'
-
 from models import (BookModel,
         InproceedingsModel,
         ArticleModel,
@@ -45,6 +42,9 @@ from database_operations import (Enc,
         list_inproceedings,
         list_articles)
 
+app = Flask(__name__)
+app.config['STATIC_FOLDER'] = 'static'
+
 @app.route('/')
 def main():
     return render_template('index.html',
@@ -57,7 +57,7 @@ def get_all_bibtex():
     s = ''
 
     for b in all_items['books']:
-        s += (b.bibtex + '<br>')
+        s += b.bibtex + '<br>'
     for a in all_items['articles']:
         s += a.bibtex + '<br>'
     for i in all_items['inproceedings']:
@@ -143,6 +143,7 @@ def article_deleting(a_id):
 def book_editing(b_id):
     if request.method == 'GET':
         b = get_book(b_id)
+
         return render_template('edit_book.html', book = Enc().encode(b))
     else:
         r = request.form
@@ -160,6 +161,7 @@ def book_editing(b_id):
 def inproceedings_editing(b_id):
     if request.method == 'GET':
         i = get_inproceedings(i_id)
+
         return render_template('edit_inproceedings.html', inproceedings = Enc().encode(i))
     else:
         r = request.form
@@ -176,6 +178,7 @@ def inproceedings_editing(b_id):
 def article_editing(a_id):
     if request.method == 'GET':
         a = get_article(a_id)
+
         return render_template('edit_article.html', article = Enc().encode(a))
     else:
         r = request.form
