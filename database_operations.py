@@ -155,3 +155,4 @@ def get_article(article_id):
         str(db_article._id))
 
     return a
+

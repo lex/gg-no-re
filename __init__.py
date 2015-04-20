@@ -20,9 +20,30 @@ from bson.objectid import ObjectId
 app = Flask(__name__)
 app.config['STATIC_FOLDER'] = 'static'
 
-from models import *
+from models import (BookModel,
+        InproceedingsModel,
+        ArticleModel,
+        Book,
+        Inproceedings,
+        Article)
 
-from database_operations import *
+from database_operations import (Enc,
+        delete_book,
+        delete_inproceedings,
+        delete_article,
+        edit_book,
+        edit_inproceedings,
+        edit_article,
+        add_book,
+        add_inproceedings,
+        add_article,
+        get_book,
+        get_inproceedings,
+        get_article,
+        get_index_content,
+        list_books,
+        list_inproceedings,
+        list_articles)
 
 @app.route('/')
 def main():
