@@ -61,6 +61,7 @@ class TestBookOperations(unittest.TestCase):
         self.assertTrue(len(books) == 1)
         delete_book(str(b_id))
 
+
 class TestInproceedingsOperations(unittest.TestCase):
 
     def test_adding(self):
@@ -163,6 +164,21 @@ class TestArticleOperations(unittest.TestCase):
         self.assertTrue(len(articles) == 1)
         delete_article(str(a_id))
 
+
+class TestReferences(unittest.TestCase):
+
+    def test_same_references(self):
+        first_b_id = add_book(*book_args)
+        second_b_id = add_book(*book_args)
+        self.assertEquals(second_b_id, None)
+        delete_book(str(first_b_id))
+
+    def test_different_references(self):
+        first_b_id = add_book(*book_args)
+        second_b_id = add_book(*[x if (x != 'reference') else 'second_reference' for x in book_args])
+        self.assertTrue(second_b_id is not None)
+        delete_book(str(first_b_id))
+        delete_book(str(second_b_id))
 
 if __name__ == '__main__':
     if os.getenv('TEST') != 'y':
