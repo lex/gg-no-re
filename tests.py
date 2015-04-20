@@ -29,11 +29,11 @@ class TestBookOperations(unittest.TestCase):
         old_book = get_book(str(b_id))
         edit_book('newtitle', 'newauthor', 'newpages', 'newyear', 'newpublisher', str(b_id))
         new_book = get_book(str(b_id))
-        self.assertTrue(old_book.title is not new_book.title)
-        self.assertTrue(old_book.author is not new_book.author)
-        self.assertTrue(old_book.pages is not new_book.pages)
-        self.assertTrue(old_book.year is not new_book.year)
-        self.assertTrue(old_book.publisher is not new_book.publisher)
+        self.assertTrue(old_book.title != new_book.title)
+        self.assertTrue(old_book.author != new_book.author)
+        self.assertTrue(old_book.pages != new_book.pages)
+        self.assertTrue(old_book.year != new_book.year)
+        self.assertTrue(old_book.publisher != new_book.publisher)
         self.assertTrue(old_book.db_id == new_book.db_id)
 
 
@@ -79,10 +79,10 @@ class TestInproceedingsOperations(unittest.TestCase):
         old_ip = get_inproceedings(str(i_id))
         edit_inproceedings('newauthor', 'newtitle', 'newschool', 'newyear', str(i_id))
         new_ip = get_inproceedings(str(i_id))
-        self.assertTrue(old_ip.author is not new_ip.author)
-        self.assertTrue(old_ip.title is not new_ip.title)
-        self.assertTrue(old_ip.school is not new_ip.school)
-        self.assertTrue(old_ip.year is not new_ip.year)
+        self.assertTrue(old_ip.author != new_ip.author)
+        self.assertTrue(old_ip.title != new_ip.title)
+        self.assertTrue(old_ip.school != new_ip.school)
+        self.assertTrue(old_ip.year != new_ip.year)
         self.assertTrue(old_ip.db_id == new_ip.db_id)
 
 
@@ -128,11 +128,11 @@ class TestArticleOperations(unittest.TestCase):
         old_article = get_article(str(a_id))
         edit_article('newauthor', 'newtitle', 'newjournal', 'newyear', 'newvolume',  str(a_id))
         new_article = get_article(str(a_id))
-        self.assertTrue(old_article.author is not new_article.author)
-        self.assertTrue(old_article.title is not new_article.title)
-        self.assertTrue(old_article.journal is not new_article.journal)
-        self.assertTrue(old_article.year is not new_article.year)
-        self.assertTrue(old_article.volume is not new_article.volume)
+        self.assertTrue(old_article.author != new_article.author)
+        self.assertTrue(old_article.title != new_article.title)
+        self.assertTrue(old_article.journal != new_article.journal)
+        self.assertTrue(old_article.year != new_article.year)
+        self.assertTrue(old_article.volume != new_article.volume)
         self.assertTrue(old_article.db_id == new_article.db_id)
 
     def test_bibtex(self):
