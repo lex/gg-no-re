@@ -1,4 +1,4 @@
-<reference-add>
+<book-add>
     <div class='row'>
         <div class='small-12 small-centered colums'>
             <p align='center'>
@@ -18,9 +18,12 @@
                 Publisher:
                 <input type='text' name='publisher'>
                 <br>
+                Reference:
+                <input type='text' name='reference'>
+                <br>
                 <input type='submit' value='Add book' class='button'>
             </form>
             </p>
         </div>
     </div>
-</reference-add>
+</book-add>

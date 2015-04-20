@@ -6,9 +6,9 @@ riot.tag('reference-manager', '<div class="row" if="{ books.length > 0 }"> <div 
     
 });
 
-riot.tag('enterprise-book-list', '<table> <thead> <tr> <th each="{ th in book_tableheads }">{ th }</th> </tr> </thead> <tbody> <tr each="{ b in books }"> <td style="max-width: 250px; word-wrap: break-word"> { b.author } </td> <td style="max-width: 250px; word-wrap: break-word"> { b.title } </td> <td style="max-width: 250px; word-wrap: break-word"> { b.pages } </td> <td style="max-width: 250px; word-wrap: break-word"> { b.year } </td> <td style="max-width: 250px; word-wrap: break-word"> { b.publisher } </td> <td> <a href="edit_book/{ b.db_id }">edit</a> </td> <td> <a href="delete_book/{ b.db_id }">delete</a> </td> <td> <a href="show_single_bibtex/book/{ b.db_id }">show bibtex</a> </td> </tr> </tbody> </table>', function(opts) {
+riot.tag('enterprise-book-list', '<table> <thead> <tr> <th each="{ th in book_tableheads }">{ th }</th> </tr> </thead> <tbody> <tr each="{ b in books }"> <td style="max-width: 250px; word-wrap: break-word"> { b.author } </td> <td style="max-width: 250px; word-wrap: break-word"> { b.title } </td> <td style="max-width: 250px; word-wrap: break-word"> { b.pages } </td> <td style="max-width: 250px; word-wrap: break-word"> { b.year } </td> <td style="max-width: 250px; word-wrap: break-word"> { b.publisher } </td> <td style="max-width: 250px; word-wrap: break-word"> { b.reference } </td> <td> <a href="edit_book/{ b.db_id }">edit</a> </td> <td> <a href="delete_book/{ b.db_id }">delete</a> </td> <td> <a href="show_single_bibtex/book/{ b.db_id }">show bibtex</a> </td> </tr> </tbody> </table>', function(opts) {
         this.books = opts.books;
-        this.book_tableheads = ['Author', 'Title', 'Pages', 'Year', 'Publisher'];
+        this.book_tableheads = ['Author', 'Title', 'Pages', 'Year', 'Publisher', 'Reference'];
     
 });
 

@@ -1,4 +1,4 @@
-<reference-edit>
+<book-edit>
     <div class='row'>
         <div class='small-12 small-centered colums'>
             <p align='center'>
@@ -19,6 +19,9 @@
                     Publisher:
                     <input type='text' name='publisher' value={ book.publisher }>
                     <br>
+                    Reference:
+                    <input type='text' name='reference' value={ book.reference }>
+                    <br>
                     <input type='submit' value='Apply changes' class='button'>
                 </form>
             </p>
@@ -27,4 +30,4 @@
     <script>
         this.book = opts.book;
     </script>
-</reference-edit>
+</book-edit>

@@ -4,17 +4,17 @@
 <head>
     <meta charset="utf-8">
     <script src="../static/riot.js"></script>
-    <script src="../static/reference-edit.js"></script>
+    <script src="../static/book-edit.js"></script>
     <script src="../static/js/vendor/modernizr.js"></script>
     <script src="../static/js/vendor/jquery.js"></script>
     <script src="../static/js/foundation.min.js"></script>
     <link rel="stylesheet" href="../static/css/foundation.css" />
 </head>
 <body>
-    <reference-edit></reference-edit>
+    <book-edit></book-edit>
     <script>
         $(document).foundation();
-        riot.mount('reference-edit', { 'book': {{ book|safe }}});
+        riot.mount('book-edit', { 'book': {{ book|safe }}});
     </script>
 </body>
 </html>

@@ -87,7 +87,8 @@ def book_adding():
                 r['author'],
                 r['pages'],
                 r['year'],
-                r['publisher'])
+                r['publisher'],
+                r['reference'])
 
         return redirect('/')
 
@@ -101,7 +102,8 @@ def inproceedings_adding():
         add_inproceedings(r['author'],
                 r['title'],
                 r['school'],
-                r['year'])
+                r['year'],
+                r['reference'])
 
         return redirect('/')
 
@@ -116,7 +118,8 @@ def article_adding():
                 r['title'],
                 r['journal'],
                 r['year'],
-                r['volume'])
+                r['volume'],
+                r['reference'])
 
         return redirect('/')
 
@@ -152,6 +155,7 @@ def book_editing(b_id):
                 r['pages'],
                 r['year'],
                 r['publisher'],
+                r['reference'],
                 r['db_id'])
 
         return redirect('/')
@@ -169,6 +173,7 @@ def inproceedings_editing(b_id):
                 r['title'],
                 r['school'],
                 r['year'],
+                r['reference'],
                 r['db_id'])
 
         return redirect('/')
@@ -187,6 +192,7 @@ def article_editing(a_id):
                 r['journal'],
                 r['year'],
                 r['volume'],
+                r['reference'],
                 r['db_id'])
 
         return redirect('/')
