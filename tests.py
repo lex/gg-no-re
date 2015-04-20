@@ -37,9 +37,23 @@ class TestBookOperations(unittest.TestCase):
         self.assertTrue(old_book.db_id == new_book.db_id)
 
 
+    def test_bibtex(self):
+        b_id = add_book(*book_args)
+        book = get_book(str(b_id))
+        expected_bibtex = """
+@Book{<br>
+    author = "author",<br>
+    title = "title",<br>
+    publisher = "publisher",<br>
+    year = "year"<br>
+}
+"""
+        self.assertEqual(book.bibtex, expected_bibtex)
+
+
     def test_listing(self):
         books = list_books()
-        self.assertTrue(len(books) == 2)
+        self.assertTrue(len(books) == 3)
 
 class TestInproceedingsOperations(unittest.TestCase):
 
@@ -72,9 +86,23 @@ class TestInproceedingsOperations(unittest.TestCase):
         self.assertTrue(old_ip.db_id == new_ip.db_id)
 
 
+    def test_bibtex(self):
+        i_id = add_inproceedings(*inproceedings_args)
+        ip = get_inproceedings(str(i_id))
+        expected_bibtex = """
+@INPROCEEDINGS{<br>
+    author = "author",<br>
+    title = "title",<br>
+    school = "school",<br>
+    year = "year"<br>
+}
+"""
+        self.assertEqual(ip.bibtex, expected_bibtex)
+
+
     def test_listing(self):
         inproceedings = list_inproceedings()
-        self.assertTrue(len(inproceedings) == 2)
+        self.assertTrue(len(inproceedings) == 3)
 
 class TestArticleOperations(unittest.TestCase):
 
@@ -107,10 +135,24 @@ class TestArticleOperations(unittest.TestCase):
         self.assertTrue(old_article.volume is not new_article.volume)
         self.assertTrue(old_article.db_id == new_article.db_id)
 
+    def test_bibtex(self):
+        a_id = add_article(*article_args)
+        article = get_article(str(a_id))
+        expected_bibtex = """
+@ARTICLE{<br>
+    author = "author",<br>
+    title = "title",<br>
+    journal = "journal",<br>
+    year = "year",<br>
+    volume = "volume"<br>
+}
+"""
+        self.assertEqual(article.bibtex, expected_bibtex)
+
 
     def test_listing(self):
         articles = list_articles()
-        self.assertTrue(len(articles) == 2)
+        self.assertTrue(len(articles) == 3)
 
 
 if __name__ == '__main__':
