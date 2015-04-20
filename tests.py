@@ -36,6 +36,7 @@ class TestBookOperations(unittest.TestCase):
         self.assertTrue(old_book.publisher is not new_book.publisher)
         self.assertTrue(old_book.db_id == new_book.db_id)
 
+
     def test_listing(self):
         books = list_books()
         self.assertTrue(len(books) == 2)
@@ -69,6 +70,7 @@ class TestInproceedingsOperations(unittest.TestCase):
         self.assertTrue(old_ip.school is not new_ip.school)
         self.assertTrue(old_ip.year is not new_ip.year)
         self.assertTrue(old_ip.db_id == new_ip.db_id)
+
 
     def test_listing(self):
         inproceedings = list_inproceedings()
@@ -105,9 +107,11 @@ class TestArticleOperations(unittest.TestCase):
         self.assertTrue(old_article.volume is not new_article.volume)
         self.assertTrue(old_article.db_id == new_article.db_id)
 
+
     def test_listing(self):
         articles = list_articles()
         self.assertTrue(len(articles) == 2)
+
 
 if __name__ == '__main__':
     unittest.main()
