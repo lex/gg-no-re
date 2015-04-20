@@ -1,6 +1,8 @@
 import unittest
 from database_operations import *
 from models import *
+import os
+
 book_args = ['title', 'author', 'pages', 'year', 'publisher']
 inproceedings_args = ['author', 'title', 'school', 'year']
 article_args = ['author', 'title', 'journal', 'year', 'volume']
@@ -156,5 +158,8 @@ class TestArticleOperations(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    if os.getenv('TEST') != 'y':
+        print 'run with run_tests.sh'
+    else:
+        unittest.main()
 
