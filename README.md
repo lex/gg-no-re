@@ -16,6 +16,7 @@ gg no re is a web scale in-memory reference database manager. Some features incl
 Live demo at: http://oispa.beer:5000
 
 ### Installation
+
   Clone the repository, then:
   ```sh
   $ cd gg-no-re
@@ -24,7 +25,20 @@ Live demo at: http://oispa.beer:5000
 ```
 
 ### Jenkins
+
 http://ohtu.jamo.io/view/k2015-ohtu-miniprojektit/job/gg-no-re/
+
+### Waffle.io
+
+https://waffle.io/lex/gg-no-re
+
+### Definition of done
+
+It compiles on jenkins
+It is continuously integrated
+It is properly tested
+The code is clean
+It meets the expectations if the product owner
 
 ### License
 
