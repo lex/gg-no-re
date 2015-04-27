@@ -39,11 +39,6 @@ ArticleModel = collection('reference_article',
         Field('volume', str),
         Field('reference', str))
 
-ReferenceModel = collection('custom_reference',
-        session.session,
-        Field('_id', schema.ObjectId),
-        Field('reference', str))
-
 
 class Book:
     def __init__(self, title, author, pages, year, publisher, reference, db_id):
@@ -110,7 +105,3 @@ class Article:
 }}
 """.format(self.reference + ',', author, title, journal, year, volume)
 
-class Reference:
-    def __init__(self, reference, db_id):
-        self.reference = reference
-        self.db_id = db_id

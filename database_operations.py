@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from models import *
 from json import JSONEncoder
 from bson.objectid import ObjectId
@@ -8,30 +10,23 @@ class Enc(JSONEncoder):
 
 
 def delete_book(db_id):
-    ref = BookModel.m.find({'_id': ObjectId(db_id)}).first().reference
-    remove_reference(ref)
     return BookModel.m.remove({'_id': ObjectId(db_id)})
 
 
 def delete_inproceedings(db_id):
-    ref = InproceedingsModel.m.find({'_id': ObjectId(db_id)}).first().reference
-    remove_reference(ref)
     return InproceedingsModel.m.remove({'_id': ObjectId(db_id)})
 
 
 def delete_article(db_id):
-    ref = ArticleModel.m.find({'_id': ObjectId(db_id)}).first().reference
-    remove_reference(ref)
     return ArticleModel.m.remove({'_id': ObjectId(db_id)})
 
 
 def edit_book(title, author, pages, year, publisher, reference, db_id):
-    reference_free = check_and_reserve_reference(reference)
+    reference_free = is_reference_free(reference, db_id)
     if not reference_free:
         return False
 
     db_book = BookModel.m.find({ '_id': ObjectId(db_id) }).first()
-    remove_reference(db_book.reference)
     db_book.title = title
     db_book.author = author
     db_book.pages = pages
@@ -44,12 +39,11 @@ def edit_book(title, author, pages, year, publisher, reference, db_id):
 
 
 def edit_inproceedings(author, title, school, year, reference, db_id):
-    reference_free = check_and_reserve_reference(reference)
+    reference_free = is_reference_free(reference, db_id)
     if not reference_free:
         return False
 
     db_i = InproceedingsModel.m.find({ '_id': ObjectId(db_id) }).first()
-    remove_reference(db_i.reference)
     db_i.author = author
     db_i.title = title
     db_i.school = school
@@ -61,12 +55,11 @@ def edit_inproceedings(author, title, school, year, reference, db_id):
 
 
 def edit_article(author, title, journal, year, volume, reference, db_id):
-    reference_free = check_and_reserve_reference(reference)
+    reference_free = is_reference_free(reference, db_id)
     if not reference_free:
         return False
 
     db_article = ArticleModel.m.find({ '_id': ObjectId(db_id) }).first()
-    remove_reference(db_article.reference)
     db_article.author = author
     db_article.title = title
     db_article.journal = journal
@@ -137,7 +130,7 @@ def list_articles():
 
 
 def add_book(title, author, pages, year, publisher, reference):
-    reference_free = check_and_reserve_reference(reference)
+    reference_free = is_reference_free(reference)
     if not reference_free:
         return None
 
@@ -149,12 +142,11 @@ def add_book(title, author, pages, year, publisher, reference):
         reference = reference))
 
     b.m.save()
-
     return b._id
 
 
 def add_inproceedings(author, title, school, year, reference):
-    reference_free = check_and_reserve_reference(reference)
+    reference_free = is_reference_free(reference)
     if not reference_free:
         return None
 
@@ -170,7 +162,7 @@ def add_inproceedings(author, title, school, year, reference):
 
 
 def add_article(author, title, journal, year, volume, reference):
-    reference_free = check_and_reserve_reference(reference)
+    reference_free = is_reference_free(reference)
     if not reference_free:
         return None
 
@@ -186,20 +178,25 @@ def add_article(author, title, journal, year, volume, reference):
     return a._id
 
 
-def check_and_reserve_reference(reference):
-    ref = ReferenceModel.m.find({ 'reference': reference }).first()
+def is_reference_free(ref, db_id=None):
+    b = BookModel.m.find({ 'reference': ref }).first()
+    a = ArticleModel.m.find({ 'reference': ref }).first()
+    i = InproceedingsModel.m.find({ 'reference': ref }).first()
 
-    if ref:
+    if b:
+        if str(b._id) == db_id:
+            return True
+        return False
+    if a:
+        if str(a._id) == db_id:
+            return True
+        return False
+    if i:
+        if str(i._id) == db_id:
+            return True
         return False
 
-    r = ReferenceModel(dict(reference = reference))
-
-    r.m.save()
     return True
-
-
-def remove_reference(reference):
-    return ReferenceModel.m.remove({ 'reference': reference })
 
 
 def get_book(book_id):

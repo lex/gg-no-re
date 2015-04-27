@@ -162,7 +162,7 @@ def book_editing(b_id):
 
 
 @app.route('/edit_inproceedings/<i_id>', methods=['GET', 'POST'])
-def inproceedings_editing(b_id):
+def inproceedings_editing(i_id):
     if request.method == 'GET':
         i = get_inproceedings(i_id)
 
