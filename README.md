@@ -1,5 +1,7 @@
 # gg no re
 
+![gg no re](/static/ggnore.png)
+
 gg no re is a web scale in-memory reference database manager. Some features include:
 
 - Blazing fast in-memory MongoDB database

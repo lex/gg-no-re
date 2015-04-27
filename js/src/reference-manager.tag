@@ -54,6 +54,7 @@
 </reference-manager>
 
 <enterprise-book-list>
+    <h1>Books</h1>
     <table>
         <thead>
             <tr>
@@ -83,6 +84,7 @@
 </enterprise-book-list>
 
 <enterprise-article-list>
+    <h1>Articles</h1>
     <table>
         <thead>
             <tr>
@@ -111,6 +113,7 @@
 </enterprise-article-list>
 
 <enterprise-inproceedings-list>
+    <h1>Inproceedings</h1>
     <table>
         <thead>
             <tr>

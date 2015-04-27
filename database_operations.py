@@ -4,6 +4,7 @@ from models import *
 from json import JSONEncoder
 from bson.objectid import ObjectId
 
+# custom json encoder
 class Enc(JSONEncoder):
     def default(self, o):
         return o.__dict__
