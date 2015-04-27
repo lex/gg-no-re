@@ -37,9 +37,13 @@ https://waffle.io/lex/gg-no-re
 ### Definition of done
 
 It compiles on jenkins
+
 It is continuously integrated
+
 It is properly tested
+
 The code is clean
+
 It meets the expectations if the product owner
 
 ### License
