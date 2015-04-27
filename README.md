@@ -6,7 +6,7 @@ gg no re is a web scale in-memory reference database manager. Some features incl
 
 - Blazing fast in-memory MongoDB database
 - Production ready Python backend
-- Highly functional and gorgeous riot.js frontend
+- Highly functional, responsive and gorgeous riot.js frontend
 
 ### Prerequisites
 
@@ -36,10 +36,10 @@ https://waffle.io/lex/gg-no-re
 
 ### Definition of done
 
-It compiles on jenkins  
-It is continuously integrated  
-It is properly tested  
-The code is clean  
+It compiles on jenkins
+It is continuously integrated
+It is properly tested
+The code is clean
 It meets the expectations if the product owner
 
 ### License
