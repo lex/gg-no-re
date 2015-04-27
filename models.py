@@ -108,10 +108,9 @@ class Article:
     year = "{}",<br>
     volume = "{}"<br>
 }}
-""".format(self.reference + ',', author, title, journal, year, volume).encode('utf-8')
+""".format(self.reference + ',', author, title, journal, year, volume)
 
 class Reference:
-    def __init__(self, reference, reference_reference, db_id):
+    def __init__(self, reference, db_id):
         self.reference = reference
-        self.reference_reference = reference
         self.db_id = db_id
