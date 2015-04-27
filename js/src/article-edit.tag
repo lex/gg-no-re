@@ -19,6 +19,9 @@
                     Volume:
                     <input type='text' name='volume' value={ article.volume }>
                     <br>
+                    Reference:
+                    <input type='text' name='reference' value={ article.reference }>
+                    <br>
                     <input type='submit' value='Apply changes' class='button'>
                 </form>
             </p>

@@ -15,6 +15,9 @@
                 Year:
                 <input type='text' name='year'>
                 <br>
+                Reference:
+                <input type='text' name='reference'>
+                <br>
                 <input type='submit' value='Add inproceedings' class='button'>
             </form>
             </p>

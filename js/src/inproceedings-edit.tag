@@ -16,12 +16,15 @@
                     Year:
                     <input type='text' name='year' value={ i.year }>
                     <br>
+                    Reference:
+                    <input type='text' name='reference' value={ i.reference }>
+                    <br>
                     <input type='submit' value='Apply changes' class='button'>
                 </form>
             </p>
         </div>
     </div>
     <script>
-        this.i = opts.i;
+        this.i = opts.inproceedings;
     </script>
 </inproceedings-edit>

@@ -18,6 +18,9 @@
                 Volume:
                 <input type='text' name='volume'>
                 <br>
+                Reference:
+                <input type='text' name='reference'>
+                <br>
                 <input type='submit' value='Add article' class='button'>
             </form>
             </p>

@@ -94,8 +94,9 @@
                 <td style='max-width: 250px; word-wrap: break-word'> { a.author } </td>
                 <td style='max-width: 250px; word-wrap: break-word'> { a.title } </td>
                 <td style='max-width: 250px; word-wrap: break-word'> { a.journal } </td>
-                <td style='max-width: 250px; word-wrap: break-word'> { b.year } </td>
-                <td style='max-width: 250px; word-wrap: break-word'> { b.volume } </td>
+                <td style='max-width: 250px; word-wrap: break-word'> { a.year } </td>
+                <td style='max-width: 250px; word-wrap: break-word'> { a.volume } </td>
+                <td style='max-width: 250px; word-wrap: break-word'> { a.reference } </td>
                 <td> <a href='edit_article/{ a.db_id }'>edit</a> </td>
                 <td> <a href='delete_article/{ a.db_id }'>delete</a> </td>
                 <td> <a href='show_single_bibtex/article/{ a.db_id }'>show bibtex</a> </td>
@@ -105,7 +106,7 @@
 
     <script>
         this.articles = opts.articles;
-        this.article_tableheads = ['Author', 'Title', 'Journal', 'Year', 'Volume'];
+        this.article_tableheads = ['Author', 'Title', 'Journal', 'Year', 'Volume', 'Reference'];
     </script>
 </enterprise-article-list>
 
@@ -122,6 +123,7 @@
                 <td style='max-width: 250px; word-wrap: break-word'> { i.title } </td>
                 <td style='max-width: 250px; word-wrap: break-word'> { i.school } </td>
                 <td style='max-width: 250px; word-wrap: break-word'> { i.year } </td>
+                <td style='max-width: 250px; word-wrap: break-word'> { i.reference } </td>
                 <td> <a href='edit_inproceedings/{ i.db_id }'>edit</a> </td>
                 <td> <a href='delete_inproceedings/{ i.db_id }'>delete</a> </td>
                 <td> <a href='show_single_bibtex/inproceedings/{ i.db_id }'>show bibtex</a> </td>
@@ -131,6 +133,6 @@
 
     <script>
         this.inproceedings = opts.inproceedings;
-        this.inproceedings_tableheads = ['Author', 'Title', 'School', 'Year'];
+        this.inproceedings_tableheads = ['Author', 'Title', 'School', 'Year', 'Reference'];
     </script>
 </enterprise-inproceedings-list>
