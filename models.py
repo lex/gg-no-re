@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from ming import (create_datastore,
         collection,
         Field,
@@ -56,7 +57,7 @@ class Book:
             self.reference = reference
         else:
             self.reference = ''
-        self.bibtex = """
+        self.bibtex = u"""
 @Book{{{}<br>
     author = "{}",<br>
     title = "{}",<br>
@@ -77,7 +78,7 @@ class Inproceedings:
             self.reference = reference
         else:
             self.reference = ''
-        self.bibtex = """
+        self.bibtex = u"""
 @INPROCEEDINGS{{{}<br>
     author = "{}",<br>
     title = "{}",<br>
@@ -99,7 +100,7 @@ class Article:
             self.reference = reference
         else:
             self.reference = ''
-        self.bibtex = """
+        self.bibtex = u"""
 @ARTICLE{{{}<br>
     author = "{}",<br>
     title = "{}",<br>
@@ -107,9 +108,10 @@ class Article:
     year = "{}",<br>
     volume = "{}"<br>
 }}
-""".format(self.reference + ',', author, title, journal, year, volume)
+""".format(self.reference + ',', author, title, journal, year, volume).encode('utf-8')
 
 class Reference:
-    def __init__(self, reference, db_id):
+    def __init__(self, reference, reference_reference, db_id):
         self.reference = reference
+        self.reference_reference = reference
         self.db_id = db_id
