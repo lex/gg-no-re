@@ -42,6 +42,9 @@ https://waffle.io/lex/gg-no-re
 - The code is clean
 - It meets the expectations if the product owner
 
+### Project report
+See [raportti.md](raportti.md).
+
 ### License
 
 Copyright (c) 2015, gg ez
